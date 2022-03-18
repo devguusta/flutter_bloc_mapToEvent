@@ -75,10 +75,6 @@ class _MyHomePageState extends State<MyHomePage> {
           child: BlocBuilder<HomeBloc, HomeState>(
               bloc: controller,
               builder: (context, state) {
-                if (state is HomeStateLoading) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-
                 if (state is HomeStateLoaded) {
                   return ListView.builder(
                     itemCount: state.list.length,
@@ -101,8 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text('Não há dados disponíveis.'),
                   );
                 }
-
-                return const Center(child: CircularProgressIndicator());
+                return Container();
               }),
         ));
   }
